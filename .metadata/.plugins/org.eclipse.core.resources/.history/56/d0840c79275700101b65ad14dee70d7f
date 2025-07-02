@@ -1,0 +1,5 @@
+package com.dao;
+
+public interface UsersRepository {
+    List<User> findByUserNameContaining(String name);
+}
