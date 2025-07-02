@@ -13,9 +13,9 @@ import com.bean.Product;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Integer> {
-    
+
     List<Product> findByProductNameContaining(String name);
-    
+
     @Modifying
     @Transactional
     @Query("UPDATE Product p SET p.productCategory = :category WHERE p.productId = :productId")

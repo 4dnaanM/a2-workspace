@@ -42,7 +42,7 @@ public class Product {
 		this.productName = productName;
 	}
 	
-	protected void setProductCategory(String productCategory) {
+	public void setProductCategory(String productCategory) {
 		this.productCategory = productCategory;
 	}
 
