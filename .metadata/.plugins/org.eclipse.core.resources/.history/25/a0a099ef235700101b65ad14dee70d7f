@@ -1,0 +1,29 @@
+package com.bean;
+
+import java.time.LocalDateTime;
+
+public class Purchase {
+
+	private int purchaseId; 
+	private User purchaseUser;
+	private Product purchaseProduct;
+	private LocalDateTime purchaseDateTime; 
+	private int purchaseQuantity;
+	public int getPurchaseId() {
+		return purchaseId;
+	}
+	public User getPurchaseUser() {
+		return purchaseUser;
+	}
+	public Product getPurchaseProduct() {
+		return purchaseProduct;
+	}
+	public LocalDateTime getPurchaseDateTime() {
+		return purchaseDateTime;
+	}
+	public int getPurchaseQuantity() {
+		return purchaseQuantity;
+	} 
+
+	
+}

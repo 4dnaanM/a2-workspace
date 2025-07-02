@@ -1,0 +1,29 @@
+package com.bean;
+
+public class Product {
+    
+	private int productId; 
+    private String productName; 
+    private String productCategory;
+    private float productPrice;
+	
+	public int getProductId() {
+		return productId;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public String getProductCategory() {
+		return productCategory;
+	}
+	public float getProductPrice() {
+		return productPrice;
+	}
+	
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", productName=" + productName + ", productCategory="
+				+ productCategory + ", productPrice=" + productPrice + "]";
+	}
+    
+}

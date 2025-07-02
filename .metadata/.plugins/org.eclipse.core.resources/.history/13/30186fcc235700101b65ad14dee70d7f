@@ -1,0 +1,29 @@
+package com.bean;
+
+public class Purchase {
+
+	private int purchaseId; 
+	private User purchaseUser;
+	private Product purchaseProduct;
+	private LocalDateTime purchaseDateTime; 
+	private int purchaseQuantity; 
+
+	public Purchase(int userId, int productId) {
+		super();
+		this.userId = userId;
+		this.productId = productId;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+	public int getProductId() {
+		return productId;
+	}
+
+	@Override
+	public String toString() {
+		return "Purchase [userId=" + userId + ", productId=" + productId + "]";
+	}
+}

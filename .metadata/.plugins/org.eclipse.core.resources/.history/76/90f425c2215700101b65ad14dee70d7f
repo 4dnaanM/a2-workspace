@@ -1,0 +1,9 @@
+package com.bean;
+
+public class Product {
+    private int productId; 
+    private String productName; 
+    private String productCategory;
+    private float productPrice; 
+    
+}
