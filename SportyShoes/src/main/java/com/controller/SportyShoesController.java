@@ -46,10 +46,12 @@ public class SportyShoesController {
         }
     }
 
-    @RequestMapping(value = "/user/{userid}", method = RequestMethod.GET)
-    public String userDashboard(Model model) {
+    @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
+    public String userDashboard(@PathVariable int userId, Model model) {
         model.addAttribute("message", "");
+        model.addAttribute("userId", userId);
         model.addAttribute("products",productService.getAllProducts());
+        model.addAttribute("orders",purchaseService.getPurchaseByUser(userId));
         return "userDashboard";
     }
 
@@ -57,7 +59,9 @@ public class SportyShoesController {
     public String addUserPurchase(@PathVariable int userId, int productId, int quantity, Model model) {
         
         model.addAttribute("message", purchaseService.addPurchase(userId, productId, quantity));
+        model.addAttribute("userId", userId);
         model.addAttribute("products",productService.getAllProducts());
+        model.addAttribute("orders",purchaseService.getPurchaseByUser(userId));
         return "userDashboard";
     }
 

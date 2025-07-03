@@ -58,4 +58,9 @@ public class PurchaseService {
         return purchases;
     }  
 
+    public List<Purchase> getPurchaseByUser(int userId){
+        List<Purchase> purchases = purchaseRepository.findByPurchaseUser_UserId(userId);
+        return purchases;
+    }
+
 }
