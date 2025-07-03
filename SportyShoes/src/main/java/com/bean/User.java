@@ -18,9 +18,8 @@ public class User {
 
     public User() {}
 
-    public User(int userId, String userName, String userRole, String email, LocalDateTime registrationDate) {
+    public User(String userName, String userRole, String email) {
         super();
-        this.userId = userId;
         this.userName = userName;
         this.userRole = userRole;
     }

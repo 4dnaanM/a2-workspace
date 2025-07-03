@@ -29,10 +29,9 @@ public class Purchase {
 	
 	public Purchase() {}
 	
-	public Purchase(int id, User user, Product product, LocalDateTime dateTime,
+	public Purchase(User user, Product product, LocalDateTime dateTime,
 			int quantity, double totalPrice) {
 		super();
-		this.purchaseId = id;
 		this.purchaseUser = user;
 		this.purchaseProduct = product;
 		this.purchaseDateTime = dateTime;

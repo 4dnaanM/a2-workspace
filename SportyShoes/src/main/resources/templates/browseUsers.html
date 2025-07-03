@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Browse Users</title>
+</head>
+<body>
+    <h1>Browse Users</h1>
+    <form method="get" action="/admin/users">
+        <input type="text" name="search" placeholder="Search users..." />
+        <button type="submit">Search</button>
+    </form>
+
+    <!-- Add User Form -->
+    <h2>Add User</h2>
+    <form method="post" action="/admin/users">
+        <input type="text" name="name" placeholder="Name" required />
+        <input type="text" name="role" placeholder="Role" required />
+        <button type="submit">Add User</button>
+    </form>
+    <div th:if="${message}" th:text="${message}" style="color: green;"></div>
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Role</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.userId}"></td>
+            <td th:text="${user.userName}"></td>
+            <td th:text="${user.userRole}"></td>
+        </tr>
+    </table>
+</body>
+</html>

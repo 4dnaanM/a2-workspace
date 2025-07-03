@@ -17,9 +17,8 @@ public class Product {
 	
     public Product() {}
     
-	public Product(int productId, String productName, String productCategory, float productPrice) {
+	public Product(String productName, String productCategory, float productPrice) {
 		super();
-		this.productId = productId;
 		this.productName = productName;
 		this.productCategory = productCategory;
 		this.productPrice = productPrice;

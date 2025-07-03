@@ -14,7 +14,8 @@ public class ProductService {
 	@Autowired
 	ProductRepository productRepository;
 	
-	public String addProduct(Product product) {
+	public String addProduct(String productName, String productCategory, float productPrice) {
+		Product product = new Product(productName, productCategory, productPrice);
 		productRepository.save(product);
 		return "";
 	}

@@ -14,17 +14,19 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    void addUser(User user){
+    public void addUser(String userName, String userRole, String email){
+        User user = new User(userName, userRole, email);
         userRepository.save(user);
     }
     
-    List<User> getUserNameContaining(String name){
+    public List<User> getUserNameContaining(String name){
         List<User> users = userRepository.findByUserNameContaining(name);
         return users; 
     }
 
-    List<User> getAllUsers(String name){
+    public List<User> getAllUsers(){
         List<User> users = userRepository.findAll();
         return users; 
     }
+    
 }

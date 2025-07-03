@@ -178,3 +178,6 @@
 2025-07-02 15:23:49,760 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src/main/resources to target/classes
 2025-07-02 15:23:49,764 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 3 resources from src/main/resources to target/classes
 2025-07-02 15:23:49,765 [Worker-57: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory /Users/Adnaan/a2-workspace/SportyShoes/src/test/resources
+2025-07-02 16:20:22,097 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src/main/resources to target/classes
+2025-07-02 16:20:22,133 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 3 resources from src/main/resources to target/classes
+2025-07-02 16:20:22,136 [Worker-65: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory /Users/Adnaan/a2-workspace/SportyShoes/src/test/resources
