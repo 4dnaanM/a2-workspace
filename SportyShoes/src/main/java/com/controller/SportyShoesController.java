@@ -47,8 +47,6 @@ public class SportyShoesController {
         }
     }
 
-    
-    
     @RequestMapping(value = "/admin/products", method = RequestMethod.GET)
     public String manageProducts(Model model) {
         model.addAttribute("products", productService.getAllProducts());
@@ -57,8 +55,7 @@ public class SportyShoesController {
 
     @RequestMapping(value = "/admin/products/update", method = RequestMethod.POST)
     public String updateProduct(Model model, int productId, String category) {
-        productService.updateProductCategory(productId, category);
-        model.addAttribute("products", productService.getAllProducts());
+        model.addAttribute("products", productService.updateProductCategory(productId, category));
         return "redirect:/admin/products";
     }
 
@@ -100,18 +97,20 @@ public class SportyShoesController {
             model.addAttribute("reports", purchaseService.getPurchasesOn(localDate));
             model.addAttribute("message", "Reports on "+ date + " date fetched successfully");
         }
-        else{
+        else if(category!=null && !category.isEmpty()){
             model.addAttribute("reports",purchaseService.getPurchaseByCategory(category));
             model.addAttribute("message", "Reports on "+ category + " purchases fetched successfully");
         }
-        
+        else{
+            model.addAttribute("reports",purchaseService.getAllPurchases());
+        }
         return "purchaseReports";
     }
 
     @RequestMapping(value = "/admin/purchases", method = RequestMethod.POST)
     public String addPurchase(int userId, int productId, int quantity, Model model) {
-        purchaseService.addPurchase(userId, productId, quantity);
-        model.addAttribute("message", "Purchase added successfully");
+        
+        model.addAttribute("message", purchaseService.addPurchase(userId, productId, quantity));
         model.addAttribute("reports",purchaseService.getAllPurchases());
         return "purchaseReports";
     }

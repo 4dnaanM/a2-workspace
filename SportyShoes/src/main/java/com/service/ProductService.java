@@ -17,15 +17,16 @@ public class ProductService {
 	public String addProduct(String productName, String productCategory, float productPrice) {
 		Product product = new Product(productName, productCategory, productPrice);
 		productRepository.save(product);
-		return "";
+		return "Product added successfully";
 	}
 	
 	public String updateProductCategory(int id, String category) {
 		Product product = productRepository.findById(id).orElse(null);
-		if (product != null) {
-			productRepository.updateProductCategory(id,category);
+		if (product == null) {
+			return "Product does not exist";
 		}
-		return "";
+		productRepository.updateProductCategory(id,category);
+		return "Product updated successfully";
 	}
 
 	public List<Product> getAllProducts() {

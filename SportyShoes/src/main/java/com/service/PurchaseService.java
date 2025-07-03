@@ -24,14 +24,18 @@ public class PurchaseService {
     @Autowired
     UserRepository userRepository;
 
-    public void addPurchase(int userId, int productId, int quantity){
-        Product prod = productRepository.getReferenceById(productId);
-        User user = userRepository.getReferenceById(userId);
-        if (user == null || prod == null) {
-            return;
+    public String addPurchase(int userId, int productId, int quantity){
+        Product prod = productRepository.findById(productId).orElse(null);
+        User user = userRepository.findById(userId).orElse(null);
+        if (user == null) {
+            return "User does not exist";
+        }
+        if(prod == null) {
+            return "Product does not exist";
         }
         Purchase purchase = new Purchase(user, prod, LocalDateTime.now(), quantity, quantity*prod.getProductPrice());
         purchaseRepository.save(purchase);
+        return "Purchase added successfully";
     }
 
     public List<Purchase> getAllPurchases(){
