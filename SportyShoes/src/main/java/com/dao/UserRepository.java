@@ -8,5 +8,7 @@ import com.bean.User;
 
 public interface UserRepository extends JpaRepository<User, Integer>{
     List<User> findByUserNameContaining(String name);
+    List<User> findByUserRole(String role);
+    List<User> findByUserName(String name);
     List<User> findAll();
 }

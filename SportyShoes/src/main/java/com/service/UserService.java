@@ -28,5 +28,15 @@ public class UserService {
         List<User> users = userRepository.findAll();
         return users; 
     }
+
+    public boolean isAdmin(String userName) {
+        List<User> admins = userRepository.findByUserRole("admin");
+        return admins.stream().anyMatch(user -> user.getUserName().equals(userName));
+    }
+
+    public boolean isUser(String userName) {
+        List<User> users = userRepository.findByUserName(userName);
+        return !users.isEmpty();
+    }
     
 }

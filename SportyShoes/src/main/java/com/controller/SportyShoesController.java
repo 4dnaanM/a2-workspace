@@ -32,21 +32,38 @@ public class SportyShoesController {
         return "loginPage";
     }
 
-    @RequestMapping(value = "/admin", method = RequestMethod.GET)
-    public String adminDashboard(Model model) {
-        return "adminDashboard";
-    }
-    
     @RequestMapping(value="/login", method=RequestMethod.POST)
     public String login(String email, String password, Model model) {
-        if ("admin@email.com".equals(email) && "password".equals(password)) {
+        if (("admin@email.com".equals(email) && "password".equals(password))|| ((userService.isAdmin(email)))) {
             return "redirect:admin";
+        } else if (userService.isUser(email)){ // add password check
+            return "redirect:user";
         } else {
             model.addAttribute("error", "Invalid email or password");
             return "loginPage";
         }
     }
 
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String userDashboard(Model model) {
+        model.addAttribute("message", "");
+        model.addAttribute("products",productService.getAllProducts());
+        return "userDashboard";
+    }
+
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public String addUserPurchase(int userId, int productId, int quantity, Model model) {
+        
+        model.addAttribute("message", purchaseService.addPurchase(userId, productId, quantity));
+        model.addAttribute("products",productService.getAllProducts());
+        return "userDashboard";
+    }
+
+    @RequestMapping(value = "/admin", method = RequestMethod.GET)
+    public String adminDashboard(Model model) {
+        return "adminDashboard";
+    }
+    
     @RequestMapping(value = "/admin/products", method = RequestMethod.GET)
     public String manageProducts(Model model) {
         model.addAttribute("products", productService.getAllProducts());
@@ -108,7 +125,7 @@ public class SportyShoesController {
     }
 
     @RequestMapping(value = "/admin/purchases", method = RequestMethod.POST)
-    public String addPurchase(int userId, int productId, int quantity, Model model) {
+    public String addAdminPurchase(int userId, int productId, int quantity, Model model) {
         
         model.addAttribute("message", purchaseService.addPurchase(userId, productId, quantity));
         model.addAttribute("reports",purchaseService.getAllPurchases());
